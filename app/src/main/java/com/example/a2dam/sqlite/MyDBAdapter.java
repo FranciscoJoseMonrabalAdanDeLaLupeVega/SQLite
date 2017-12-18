@@ -17,6 +17,7 @@ public class MyDBAdapter {
     private static final String DATABASE_TABLE2 = "profesores";
     private static final int DATABASE_VERSION = 1;
 
+    private static final String ID = "_id";
     private static final String NOMBRE = "nombre";
     private static final String EDAD = "edad";
     private static final String CICLO = "ciclo";
@@ -79,6 +80,15 @@ public class MyDBAdapter {
         db.insert(DATABASE_TABLE2,null,newValues);
     }
 
+    public static void borrarAlumno(int row) {
+
+        db.delete(DATABASE_TABLE, ID + "=" + row, null);
+    }
+
+    public static void borrarProfesor (int row) {
+
+        db.delete(DATABASE_TABLE2, ID + "=" + row, null);
+    }
     private static class MyDbHelper extends SQLiteOpenHelper {
 
         public MyDbHelper (Context context, String name, SQLiteDatabase.CursorFactory factory, int version){
