@@ -2,9 +2,12 @@ package com.example.a2dam.sqlite;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import java.util.ArrayList;
 
 /**
  * Created by 2dam.
@@ -87,8 +90,30 @@ public class MyDBAdapter {
 
     public static void borrarProfesor (int row) {
 
-        db.delete(DATABASE_TABLE2, ID + "=" + row, null);
+        db.delete(DATABASE_TABLE2, ID + "=" + row,null);
     }
+
+    public static ArrayList<Alumno> recuperarAlumunos(){
+        ArrayList<Alumno> alumnos = new ArrayList<Alumno>();
+        //Recuperamos en un cursor la consulta realizada
+        Cursor cursor = db.query(DATABASE_TABLE,null,null,null,null,null,null);
+        //Recorremos el cursor
+        if (cursor != null && cursor.moveToFirst()){
+            do{
+                Alumno alumno = new Alumno();
+
+                alumno.setNombre(cursor.getString(0));
+                alumno.setEdad(cursor.getString(1));
+                alumno.setCurso(cursor.getString(2));
+                alumno.setCiclo(cursor.getString(3));
+                alumno.setMedia(cursor.getString(4));
+
+                alumnos.add(alumno);
+            }while (cursor.moveToNext());
+        }
+        return alumnos;
+    }
+
     private static class MyDbHelper extends SQLiteOpenHelper {
 
         public MyDbHelper (Context context, String name, SQLiteDatabase.CursorFactory factory, int version){

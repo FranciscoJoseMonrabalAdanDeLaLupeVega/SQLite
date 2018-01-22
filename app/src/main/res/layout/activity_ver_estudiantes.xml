@@ -5,24 +5,29 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.a2dam.sqlite.DelProfesores">
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Introduce un ID:" />
-
-    <EditText
-        android:id="@+id/tID_profesor"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textPersonName" />
+    tools:context="com.example.a2dam.sqlite.VerEstudiantes">
 
     <Button
-        android:id="@+id/btnBorrarProfesor"
+        android:id="@+id/btnVerEstudiantes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Borrar" />
+        android:text="ver estudiantes" />
+
+    <Button
+        android:id="@+id/btnEstuCurso"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Estudiantes Curso" />
+
+    <Button
+        android:id="@+id/btnEstuCiclo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Estudiantes ciclo" />
+
+    <Button
+        android:id="@+id/btnEstuCicloCurso"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Estudiantes ciclo y curso" />
 </android.widget.LinearLayout>

@@ -19,7 +19,9 @@
         <activity android:name=".IntroEstudiantes" />
         <activity android:name=".IntroProfesores" />
         <activity android:name=".DelEstudiantes" />
-        <activity android:name=".DelProfesores"></activity>
+        <activity android:name=".DelProfesores" />
+        <activity android:name=".VerEstudiantes" />
+        <activity android:name=".FiltradoUsuarios"></activity>
     </application>
 
 </manifest>

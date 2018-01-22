@@ -1,0 +1,70 @@
+package com.example.a2dam.sqlite;
+
+import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.Spinner;
+
+import java.util.ArrayList;
+
+public class FiltradoUsuarios extends AppCompatActivity implements AdapterView.OnItemClickListener{
+
+    private String filtrado;
+    private Spinner spinner;
+    private ListView listaUsuarios;
+    private ArrayAdapter<String> adapter;
+
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_filtrado_usuarios);
+
+        listaUsuarios = (ListView) findViewById(R.id.listaUsers);
+        spinner = (Spinner) findViewById(R.id.spinner);
+        spinner.setOnItemClickListener(this);
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+    }
+
+    public void cargarLista() {
+
+        Intent i = getIntent();
+
+        switch (i.getStringExtra("boton")) {
+
+            case "todos":
+                rellenaLista();
+                break;
+            case "ciclo":
+                break;
+            case "curso":
+                break;
+            case "cicloCurso":
+                break;
+        }
+    }
+
+    public void rellenaLista() {
+
+        ArrayList<Alumno> alumnoList = MyDBAdapter.recuperarAlumunos();
+        Alumno almn;
+        ArrayList<String> nombreAlumnoList = new ArrayList<String>();
+
+        for (int i = 0; i < alumnoList.size(); i++) {
+
+            almn = alumnoList.get(i);
+            nombreAlumnoList.add(almn.getNombre());
+        }
+
+        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, android.R.id.text1, nombreAlumnoList);
+        listaUsuarios.setAdapter(adapter);
+    }
+}
