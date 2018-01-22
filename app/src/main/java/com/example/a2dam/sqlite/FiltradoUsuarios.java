@@ -8,6 +8,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -17,12 +18,17 @@ public class FiltradoUsuarios extends AppCompatActivity{
     private Spinner spinner;
     private ListView listaUsuarios;
     private ArrayAdapter<String> adapter;
-
+    private MyDBAdapter bbddAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_filtrado_usuarios);
+
+        bbddAdapter = new MyDBAdapter(this);
+        bbddAdapter.open();
+
+        cargarLista();
 
         listaUsuarios = (ListView) findViewById(R.id.listaUsers);
         spinner = (Spinner) findViewById(R.id.spinner);
@@ -46,7 +52,6 @@ public class FiltradoUsuarios extends AppCompatActivity{
         switch (i.getStringExtra("boton")) {
 
             case "todos":
-                spinner.setEnabled(false);
                 rellenaLista();
                 break;
             case "ciclo":
@@ -60,11 +65,11 @@ public class FiltradoUsuarios extends AppCompatActivity{
 
     public void rellenaLista() {
 
-        ArrayList<Alumno> alumnoList = MyDBAdapter.recuperarAlumunos();
+        ArrayList<Alumno> alumnoList = bbddAdapter.recuperarAlumunos();
         Alumno almn;
         ArrayList<String> nombreAlumnoList = new ArrayList<String>();
 
-        for (int i = 0; i < alumnoList.size(); i++) {
+        for (int i = 0; i > alumnoList.size(); i++) {
 
             almn = alumnoList.get(i);
             nombreAlumnoList.add(almn.getNombre());

@@ -21,7 +21,9 @@
         <activity android:name=".DelEstudiantes" />
         <activity android:name=".DelProfesores" />
         <activity android:name=".VerEstudiantes" />
-        <activity android:name=".FiltradoUsuarios"></activity>
+        <activity android:name=".FiltradoUsuarios" />
+        <activity android:name=".OpAsignaturas" />
+        <activity android:name=".VerAsignaturas"></activity>
     </application>
 
 </manifest>

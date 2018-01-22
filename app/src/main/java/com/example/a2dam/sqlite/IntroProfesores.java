@@ -12,11 +12,15 @@ public class IntroProfesores extends AppCompatActivity {
 
     private EditText nombre, edad, curso, ciclo, tutor, despacho;
     private Button guardar;
+    private MyDBAdapter bbddAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intro_profesores);
+
+        bbddAdapter = new MyDBAdapter(this);
+        bbddAdapter.open();
 
         nombre = (EditText) findViewById(R.id.profNombre);
         edad = (EditText) findViewById(R.id.profEdad);
@@ -38,7 +42,7 @@ public class IntroProfesores extends AppCompatActivity {
                 prof.setTutor("" + tutor.getText());
                 prof.setDespacho("" + despacho.getText());
 
-                MyDBAdapter.insertarProfesor(prof);
+                bbddAdapter.insertarProfesor(prof);
 
                 Toast.makeText(IntroProfesores.this, "Bien rellenà", Toast.LENGTH_SHORT).show();
 

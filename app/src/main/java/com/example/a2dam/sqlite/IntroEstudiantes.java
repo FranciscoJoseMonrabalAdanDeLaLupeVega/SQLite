@@ -12,11 +12,15 @@ public class IntroEstudiantes extends AppCompatActivity {
 
     private EditText nombre, edad, curso, ciclo, notaMedia;
     private Button guardar;
+    MyDBAdapter bbddAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_intro_estudiantes);
+
+        bbddAdapter = new MyDBAdapter(this);
+        bbddAdapter.open();
 
         nombre = (EditText) findViewById(R.id.nombre);
         edad = (EditText) findViewById(R.id.edad);
@@ -36,7 +40,7 @@ public class IntroEstudiantes extends AppCompatActivity {
                 alm.setCiclo("" + ciclo.getText());
                 alm.setMedia("" + notaMedia.getText());
 
-                MyDBAdapter.insertarAlumno(alm);
+                bbddAdapter.insertarAlumno(alm);
 
                 Toast.makeText(IntroEstudiantes.this, "Bien rellenà", Toast.LENGTH_SHORT).show();
 

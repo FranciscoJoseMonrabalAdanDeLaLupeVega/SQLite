@@ -12,11 +12,15 @@ public class DelProfesores extends AppCompatActivity {
 
     private Button borrar;
     private EditText ID;
+    private MyDBAdapter bbddAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_del_profesores);
+
+        bbddAdapter = new MyDBAdapter(this);
+        bbddAdapter.open();
 
         borrar = (Button) findViewById(R.id.btnBorrarProfesor);
         ID = (EditText) findViewById(R.id.tID_profesor);
@@ -25,7 +29,7 @@ public class DelProfesores extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                MyDBAdapter.borrarProfesor(Integer.parseInt(ID.getText().toString()));
+                bbddAdapter.borrarProfesor(Integer.parseInt(ID.getText().toString()));
                 Toast.makeText(DelProfesores.this, "Alumno borrado con exito", Toast.LENGTH_SHORT).show();
 
                 Intent i = new Intent(DelProfesores.this, MainActivity.class);
