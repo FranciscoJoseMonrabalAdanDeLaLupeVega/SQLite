@@ -11,7 +11,7 @@ import android.widget.Spinner;
 
 import java.util.ArrayList;
 
-public class FiltradoUsuarios extends AppCompatActivity implements AdapterView.OnItemClickListener{
+public class FiltradoUsuarios extends AppCompatActivity{
 
     private String filtrado;
     private Spinner spinner;
@@ -26,12 +26,17 @@ public class FiltradoUsuarios extends AppCompatActivity implements AdapterView.O
 
         listaUsuarios = (ListView) findViewById(R.id.listaUsers);
         spinner = (Spinner) findViewById(R.id.spinner);
-        spinner.setOnItemClickListener(this);
-    }
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
-    @Override
-    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+            }
 
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
     }
 
     public void cargarLista() {
@@ -41,6 +46,7 @@ public class FiltradoUsuarios extends AppCompatActivity implements AdapterView.O
         switch (i.getStringExtra("boton")) {
 
             case "todos":
+                spinner.setEnabled(false);
                 rellenaLista();
                 break;
             case "ciclo":

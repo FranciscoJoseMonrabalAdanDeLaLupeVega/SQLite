@@ -30,7 +30,7 @@ public class MyDBAdapter {
     private static final String DESPACHO = "despacho";
 
     private static final String DATABASE_CREATE = "CREATE TABLE "+DATABASE_TABLE+" (_id integer primary key autoincrement, nombre text, edad text, ciclo text, curso text, media text);" +
-            "CREATE TABLE " + DATABASE_TABLE2 +" (_id integer primary key autoincrement, nombre text, edad text, ciclo text, curso text, tutor text, despacho text)";
+            "CREATE TABLE " + DATABASE_TABLE2 +" (_id integer primary key autoincrement, nombre text, edad text, ciclo text, curso text, tutor text, despacho text);";
     private static final String DATABASE_DROP = "DROP TABLE IF EXISTS "+DATABASE_TABLE+";";
 
     // Contexto de la aplicación que usa la base de datos
